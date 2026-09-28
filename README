@@ -1,50 +1,70 @@
 # Homogeneity
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.XXXXXXX.svg)](https://doi.org/10.5281/zenodo.XXXXXXX)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-Code for measuring the scale of transition to large-scale homogeneity in DESI galaxy and quasar samples.
+Code for measuring the scale of transition to large-scale homogeneity in the DESI DR1 galaxy and quasar samples.
 
 ## Contents
 
+### Measuring the mean scaled counts
+
 | Script | Description |
 |---|---|
-| `compare_RH_desilike.py` | Compare and plot the desilike chains for each of the individual and mean AbacusSummit mocks (Figure 7) |
-| `compute_toy_models.py`  | Compute the mean scaled counts for the toy models produced by `generate_toy_models.py` |
-| `desilike_routines.py`   | Functions to produce models of the correlation dimension based on the full-shape models in desilike (such as LPTVelocileptors) and run fits to data |
-| `fit_data.py`            | Fit the data using a cosmology-independent b-spline and emcee |
-| `fit_data_binning.py`    | Fit the data using a cosmology-independent b-spline and emcee for different bin width and numbers of spline knots (Figure 10) |
-| `fit_data_desilike.py`   | Fit the data using the LPTVelocileptors-based model within desilike and the pocomc sampler |
-| `fit_data_scalecuts.py`  | Fit the data using a cosmology-independent b-spline and emcee for different minimum and maximum scale cuts (Figure 11) |
-| `fit_mock_average.py`    | Fit the average of the AbacusSummit simulations using a cosmology-independent b-spline and emcee |
-| `fit_mock_average_desilike.py`    | Fit the average of the AbacusSummit simulations using the LPTVelocileptors-based model within desilike and the pocomc sampler |
-| `fit_mock_individual.py`          | Fit the individual AbacusSummit realisations using a cosmology-independent b-spline and emcee |
-| `fit_mock_individual_desilike.py` | Fit the individual AbacusSummit realisations using the LPTVelocileptors-based model within desilike and the pocomc sampler |
-| `generate_toy_models.py`     | Produce sets of particles in a box based on simple uniform, gaussian, void and Swiss Cheese distributions |
-| `plot_fit_data.py`           | Analyse the b-spline model emcee chains and plot the mean scaled counts and correlation dimensions for the various DESI data tracers (Figures 4 & 5) |
-| `plot_fit_data_desilike.py`  | Analyse the LPTVelocileptors desilike chains and plot the mean scaled counts and correlation dimensions for the various DESI data tracers (Figure 8) |
-| `plot_homogeneity_vs_redshift.py`  | Plot the homogeneity scale recovered from the different DESI tracers against redshift and other literature results (Figure 9) |
-| `plot_RH.py`                       | Plot models of the correlation dimension using desilike for different choices of input parameter (Figure 6) |
-| `plot_toy_models.py`     | Plot the particle distributions and mean scaled counts produced by `generate_toy_models.py` and `compute_toy_models.py` (Figure 3) |
-| `python_routines.py`     | Numerous utility functions to read in and work with the mean scaled counts, produce general plots and run model-independent fits |
-| `rescale_MSC.py`         | Rescale the mock average correlation dimension to recover the matter correlation dimension using the desilike fits |
-| `rescale_MSC.py`         | Rescale the data correlation dimension to recover the matter correlation dimension using the desilike fits |
-| `script_NERSC.py`        | Compute the mean scaled counts on the altmtl AbacusSummit simulations |
-| `script_NERSC_data.py`   | Compute the mean scaled counts on the DESI DR1 data |
-| `script_NERSC_EZmock.py` | Compute the mean scaled counts on the ffa EZmock simulations |
+| `script_NERSC_data.py`   | Compute mean scaled counts for DESI DR1 data |
+| `script_NERSC.py`        | Compute mean scaled counts for altmtl AbacusSummit mocks |
+| `script_NERSC_EZmock.py` | Compute mean scaled counts for ffa EZmocks |
+
+### Toy models
+
+| Script | Description | Figure |
+|---|---|:---:|
+| `generate_toy_models.py` | Generate particle boxes with uniform, Gaussian, void and Swiss-cheese distributions | |
+| `compute_toy_models.py`  | Compute mean scaled counts for the toy models | |
+| `plot_toy_models.py`     | Plot toy-model particle distributions and mean scaled counts | 3 |
+
+### Model-independent fits (B-spline + emcee)
+
+| Script | Description | Figure |
+|---|---|:---:|
+| `fit_data.py`             | Fit the DESI data | |
+| `fit_data_binning.py`     | Fit the data with varying bin widths and numbers of spline knots | 10 |
+| `fit_data_scalecuts.py`   | Fit the data with varying minimum and maximum scale cuts | 11 |
+| `fit_mock_average.py`     | Fit the mean of the AbacusSummit mocks | |
+| `fit_mock_individual.py`  | Fit individual AbacusSummit realisations | |
+| `plot_fit_data.py`        | Plot mean scaled counts and correlation dimensions for each tracer | 4, 5 |
+
+### Full-shape fits (desilike + pocomc)
+
+| Script | Description | Figure |
+|---|---|:---:|
+| `desilike_routines.py`            | Correlation-dimension models built on desilike full-shape theories, plus fitting routines | |
+| `plot_RH.py`                      | Plot model correlation dimensions for different input parameters | 6 |
+| `fit_data_desilike.py`            | Fit the DESI data | |
+| `fit_mock_average_desilike.py`    | Fit the mean of the AbacusSummit mocks | |
+| `fit_mock_individual_desilike.py` | Fit individual AbacusSummit realisations | |
+| `compare_RH_desilike.py`          | Compare chains for individual and mean mocks | 7 |
+| `plot_fit_data_desilike.py`       | Plot mean scaled counts and correlation dimensions for each tracer | 8 |
+| `rescale_MSC.py`                  | Rescale the mock-average correlation dimension to that of matter | |
+| `rescale_MSC_data.py`             | Rescale the data correlation dimension to that of matter | |
+
+### Results and utilities
+
+| Script | Description | Figure |
+|---|---|:---:|
+| `plot_homogeneity_vs_redshift.py` | Plot homogeneity scale against redshift, with literature comparisons | 9 |
+| `python_routines.py`              | Utilities for reading mean scaled counts, plotting and model-independent fitting | |
 
 ## Data
 
-The input DESI catalogues and mocks for this work can all be found at (https://data.desi.lbl.gov/public/dr1/)
+- **Input catalogues and mocks:** DESI DR1 public release, [data.desi.lbl.gov/public/dr1](https://data.desi.lbl.gov/public/dr1/)
+- **Derived outputs** (mean scaled counts, MCMC chains): Zenodo, [10.5281/zenodo.XXXXXXX](https://doi.org/10.5281/zenodo.XXXXXXX)
 
-Intermediate and derived outputs, including mean scaled counts and MCMC chains are archived on Zenodo: [10.5281/zenodo.XXXXXXX](https://doi.org/10.5281/zenodo.XXXXXXX).
-
-Download and extract them into this repository root so the directory structure reads:
+Extract the Zenodo archive into the repository root:
 
 ```
 homogeneity/
-├── BGS/  LRG1/  LRG2/  LRG3/  ELG2/  QSO/
-├── *.npy
-├── *.txt
+├── BGS/  LRG1/  LRG2/  LRG3/  ELG2/  QSO/  toy_models/
 ├── *.yaml
 └── *.py
 ```
@@ -53,26 +73,37 @@ homogeneity/
 
 - Python ≥ 3.10
 - [numpy](https://numpy.org), [scipy](https://scipy.org), [pandas](https://pandas.pydata.org), [matplotlib](https://matplotlib.org)
-- [astropy](https://www.astropy.org)
-- [scikit-learn](https://scikit-learn.org)
-- [emcee](https://emcee.readthedocs.io)
-- [ChainConsumer](https://samreay.github.io/ChainConsumer/) ≥ 1.0
-- [JAX](https://github.com/jax-ml/jax)
-- [desilike](https://github.com/cosmodesi/desilike), with [velocileptors](https://github.com/sfschen/velocileptors) for the LPT models
-
-Most dependencies can be installed with pip:
+- [astropy](https://www.astropy.org), [scikit-learn](https://scikit-learn.org)
+- [emcee](https://emcee.readthedocs.io), [pocomc](https://pocomc.readthedocs.io), [ChainConsumer](https://samreay.github.io/ChainConsumer/) ≥ 1.0
+- [JAX](https://github.com/jax-ml/jax), [desilike](https://github.com/cosmodesi/desilike), [velocileptors](https://github.com/sfschen/velocileptors)
 
 ```bash
-pip install numpy scipy pandas matplotlib astropy scikit-learn emcee "chainconsumer>=1.0" jax
+pip install numpy scipy pandas matplotlib astropy scikit-learn emcee pocomc "chainconsumer>=1.0" jax
 pip install git+https://github.com/cosmodesi/desilike
 pip install git+https://github.com/sfschen/velocileptors
+```
 
 ## Citation
 
 If you use this code or data, please cite:
 
-<!-- Author et al. (Year), Journal, arXiv:XXXX.XXXXX -->
+> Howlett C., et al., *The scale of homogeneity in DESI Data Release 1*, in prep. [arXiv:XXXX.XXXXX](https://arxiv.org/abs/XXXX.XXXXX)
 
 ## Licence
 
-<!-- e.g. MIT — see LICENSE -->
+MIT License
+
+Copyright (c) 2026 Cullan Howlett
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation
+files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy,
+modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the
+Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the
+Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE
+WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
