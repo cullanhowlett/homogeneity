@@ -1,0 +1,172 @@
+class: KaiserTracerCorrelationDimension
+
+params:
+  b1:
+    prior:
+      limits: [0., 10.]
+    ref:
+      limits: [1., 2.]
+    latex: b_{1}
+  sigmapar:
+    prior:
+      limits: [0., 30]
+    ref:
+      dist: norm
+      loc: 5.
+      scale: 2.
+    latex: \Sigma_{\parallel}
+  sigmaper:
+    prior:
+      limits: [0., 30]
+    ref:
+      dist: norm
+      loc: 5.
+      scale: 2.
+    latex: \Sigma_{\perp}
+  RH:
+    derived: True
+    latex: R_{H}
+---
+
+class: EFTLikeKaiserTracerCorrelationDimension
+
+params:
+  b1:
+    prior:
+      limits: [0., 10.]
+    ref:
+      limits: [1., 2.]
+    latex: b_{1}
+  ct[:5:2]_2:
+    prior:
+      dist: norm
+      loc: 0.
+      scale: 100.
+    ref:
+      dist: norm
+      loc: 0.
+      scale: 1.
+    latex: c_{[], 2}
+  sigmapar:
+    value: 0.
+    prior:
+      limits: [0., 30]
+    ref:
+      dist: norm
+      loc: 5.
+      scale: 2.
+    latex: \Sigma_{\parallel}
+    fixed: True
+  sigmaper:
+    value: 0.
+    prior:
+      limits: [0., 30]
+    ref:
+      dist: norm
+      loc: 5.
+      scale: 2.
+    latex: \Sigma_{\perp}
+    fixed: True
+  RH:
+    derived: True
+    latex: R_{H}
+---
+
+class: LPTVelocileptorsTracerCorrelationDimension
+
+params:
+  b1:
+    prior:
+      limits: [-1., 10.]
+    ref:
+      limits: [-0.2, 0.2]
+    latex: b_{1}
+  b2:
+    prior:
+      dist: norm
+      loc: 0.
+      scale: 10.
+    ref:
+      dist: norm
+      loc: 0.
+      scale: 0.5
+    latex: b_{2}
+  bs:
+    prior:
+      dist: norm
+      loc: 0.
+      scale: 10.
+    ref:
+      dist: norm
+      loc: 0.
+      scale: 0.5
+    latex: b_{s}
+  b3:
+    fixed: True
+    prior:
+      dist: norm
+      loc: 0.
+      scale: 10.
+    ref:
+      dist: norm
+      loc: 0.
+      scale: 0.5
+    latex: b_{3}
+  alpha0:
+    fixed: False
+    prior:
+      dist: norm
+      loc: 0.
+      scale: 30.
+    ref:
+      dist: norm
+      loc: 0.
+      scale: 1.
+    latex: \alpha_{0}
+  alpha2:
+    fixed: True
+    prior:
+      dist: norm
+      loc: 0.
+      scale: 50.
+    ref:
+      dist: norm
+      loc: 0.
+      scale: 1.
+    latex: \alpha_{2}
+  alpha4:
+    fixed: True
+    prior:
+      dist: norm
+      loc: 0.
+      scale: 50.
+    ref:
+      dist: norm
+      loc: 0.
+      scale: 1.
+    latex: \alpha_{4}
+  alpha6:
+    fixed: True
+    prior:
+      dist: norm
+      loc: 0.
+      scale: 50.
+    ref:
+      dist: norm
+      loc: 0.
+      scale: 1.
+    latex: \alpha_{6}
+  sn0:
+    prior:
+      dist: norm
+      loc: 0.
+      scale: 4.
+    ref:
+      dist: norm
+      loc: 0.
+      scale: 0.1
+    latex: s_{n, 0}
+  RH:
+    derived: True
+    latex: R_{H}
+---

@@ -1,0 +1,78 @@
+# Homogeneity
+
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.XXXXXXX.svg)](https://doi.org/10.5281/zenodo.XXXXXXX)
+
+Code for measuring the scale of transition to large-scale homogeneity in DESI galaxy and quasar samples.
+
+## Contents
+
+| Script | Description |
+|---|---|
+| `compare_RH_desilike.py` | Compare and plot the desilike chains for each of the individual and mean AbacusSummit mocks (Figure 7) |
+| `compute_toy_models.py`  | Compute the mean scaled counts for the toy models produced by `generate_toy_models.py` |
+| `desilike_routines.py`   | Functions to produce models of the correlation dimension based on the full-shape models in desilike (such as LPTVelocileptors) and run fits to data |
+| `fit_data.py`            | Fit the data using a cosmology-independent b-spline and emcee |
+| `fit_data_binning.py`    | Fit the data using a cosmology-independent b-spline and emcee for different bin width and numbers of spline knots (Figure 10) |
+| `fit_data_desilike.py`   | Fit the data using the LPTVelocileptors-based model within desilike and the pocomc sampler |
+| `fit_data_scalecuts.py`  | Fit the data using a cosmology-independent b-spline and emcee for different minimum and maximum scale cuts (Figure 11) |
+| `fit_mock_average.py`    | Fit the average of the AbacusSummit simulations using a cosmology-independent b-spline and emcee |
+| `fit_mock_average_desilike.py`    | Fit the average of the AbacusSummit simulations using the LPTVelocileptors-based model within desilike and the pocomc sampler |
+| `fit_mock_individual.py`          | Fit the individual AbacusSummit realisations using a cosmology-independent b-spline and emcee |
+| `fit_mock_individual_desilike.py` | Fit the individual AbacusSummit realisations using the LPTVelocileptors-based model within desilike and the pocomc sampler |
+| `generate_toy_models.py`     | Produce sets of particles in a box based on simple uniform, gaussian, void and Swiss Cheese distributions |
+| `plot_fit_data.py`           | Analyse the b-spline model emcee chains and plot the mean scaled counts and correlation dimensions for the various DESI data tracers (Figures 4 & 5) |
+| `plot_fit_data_desilike.py`  | Analyse the LPTVelocileptors desilike chains and plot the mean scaled counts and correlation dimensions for the various DESI data tracers (Figure 8) |
+| `plot_homogeneity_vs_redshift.py`  | Plot the homogeneity scale recovered from the different DESI tracers against redshift and other literature results (Figure 9) |
+| `plot_RH.py`                       | Plot models of the correlation dimension using desilike for different choices of input parameter (Figure 6) |
+| `plot_toy_models.py`     | Plot the particle distributions and mean scaled counts produced by `generate_toy_models.py` and `compute_toy_models.py` (Figure 3) |
+| `python_routines.py`     | Numerous utility functions to read in and work with the mean scaled counts, produce general plots and run model-independent fits |
+| `rescale_MSC.py`         | Rescale the mock average correlation dimension to recover the matter correlation dimension using the desilike fits |
+| `rescale_MSC.py`         | Rescale the data correlation dimension to recover the matter correlation dimension using the desilike fits |
+| `script_NERSC.py`        | Compute the mean scaled counts on the altmtl AbacusSummit simulations |
+| `script_NERSC_data.py`   | Compute the mean scaled counts on the DESI DR1 data |
+| `script_NERSC_EZmock.py` | Compute the mean scaled counts on the ffa EZmock simulations |
+
+## Data
+
+The input DESI catalogues and mocks for this work can all be found at (https://data.desi.lbl.gov/public/dr1/)
+
+Intermediate and derived outputs, including mean scaled counts and MCMC chains are archived on Zenodo: [10.5281/zenodo.XXXXXXX](https://doi.org/10.5281/zenodo.XXXXXXX).
+
+Download and extract them into this repository root so the directory structure reads:
+
+```
+homogeneity/
+├── BGS/  LRG1/  LRG2/  LRG3/  ELG2/  QSO/
+├── *.npy
+├── *.txt
+├── *.yaml
+└── *.py
+```
+
+## Requirements
+
+- Python ≥ 3.10
+- [numpy](https://numpy.org), [scipy](https://scipy.org), [pandas](https://pandas.pydata.org), [matplotlib](https://matplotlib.org)
+- [astropy](https://www.astropy.org)
+- [scikit-learn](https://scikit-learn.org)
+- [emcee](https://emcee.readthedocs.io)
+- [ChainConsumer](https://samreay.github.io/ChainConsumer/) ≥ 1.0
+- [JAX](https://github.com/jax-ml/jax)
+- [desilike](https://github.com/cosmodesi/desilike), with [velocileptors](https://github.com/sfschen/velocileptors) for the LPT models
+
+Most dependencies can be installed with pip:
+
+```bash
+pip install numpy scipy pandas matplotlib astropy scikit-learn emcee "chainconsumer>=1.0" jax
+pip install git+https://github.com/cosmodesi/desilike
+pip install git+https://github.com/sfschen/velocileptors
+
+## Citation
+
+If you use this code or data, please cite:
+
+<!-- Author et al. (Year), Journal, arXiv:XXXX.XXXXX -->
+
+## Licence
+
+<!-- e.g. MIT — see LICENSE -->
